@@ -29,6 +29,10 @@ const RenderPropsPage = lazy(() =>
   import('@/pages/render-props').then(({ RenderPropsPage }) => ({ default: RenderPropsPage })),
 );
 
+const NotFoundPage = lazy(() =>
+  import('@/pages/not-found').then(({ NotFoundPage }) => ({ default: NotFoundPage })),
+);
+
 export const App = () => {
   const { appReady } = useAppInitializer();
   const basename = import.meta.env.PROD ? '/react-design-patterns/' : '/';
@@ -47,7 +51,7 @@ export const App = () => {
                   <Route path="hooks" element={<HooksPage />}></Route>
                   <Route path="/render-props" element={<RenderPropsPage />} />
                   <Route path="/about" element={<AboutPage />} />
-                  <Route path="*" element={'not found'} />
+                  <Route path="*" element={<NotFoundPage />} />
                 </Routes>
               </SuspenseProvider>
             </Layout>
